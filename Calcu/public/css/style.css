@@ -1,0 +1,17 @@
+#txt_pantalla{
+    text-align: right;
+    height: 60px;
+    font-size: 40px;
+    color: slategray;
+}
+
+.card{
+    max-width: 480px;
+}
+
+.btn{
+    height: 60px;
+    width: 100%;
+    font-size: 38px;
+}
+
