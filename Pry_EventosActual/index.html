@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Gran Evento</title>
+  <link rel="stylesheet" href="public/bootstrap-5.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="public/css/style.css">
+</head>
+
+<body class="bg-gradient-primary text-dark">
+
+  <header class="bg-info bg-gradient py-4 mb-4 shadow">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold text-white mb-0">Gran Evento 2024</h1>
+      <p class="lead text-white-50">¡Regístrate y vive la experiencia!</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row g-4">
+      <!-- Perfil Resumen Card -->
+      <div class="col-lg-4">
+        <div class="card shadow border-0 mb-4">
+          <div class="card-header bg-info text-white text-center rounded-top-4">
+            <h4 class="mb-0">Tu Perfil</h4>
+          </div>
+            <div class="card-body text-center">
+              <h5 id="preview_nombre" class="fw-bold">Steven Egas</h5>
+              <p id="preview_email" class="text-muted small">steven.egas@email.com</p>
+              <p id="preview_genero" class="mb-1"><span class="badge bg-secondary">Masculino</span></p>
+              <p id="preview_intereses" class="small text-info">Intereses: Deporte, Música, Tecnología, Lectura, Viajes</p>
+              <p class="small">Apasionado por el deporte, especialmente el fútbol y el ciclismo. Disfruta de la música, la tecnología, la lectura de ciencia ficción y explorar nuevos destinos viajando.</p>
+              <hr>
+              <div class="text-start">
+              <p class="mb-1"><strong>Género:</strong> <span id="preview_genero_detalle">Masculino</span></p>
+              <p class="mb-1"><strong>Edad:</strong> <span id="preview_edad">28</span> años</p>
+              <p class="mb-1"><strong>Deporte favorito:</strong> Fútbol</p>
+              <p class="mb-1"><strong>Color de cabello:</strong> <span id="preview_color">Castaño oscuro</span></p>
+              <p class="mb-1"><strong>Teléfono:</strong> <span id="preview_telefono">0999999999</span></p>
+              <p class="mb-1"><strong>Sitio web:</strong> <a href="https://stevenegas.com" id="preview_url" target="_blank">stevenegas.com</a></p>
+              </div>
+              <hr>
+              <p id="preview_bio" class="fst-italic small text-secondary">
+              Ingeniero en sistemas, entusiasta de la innovación y la tecnología. Siempre buscando aprender algo nuevo y compartir experiencias con otros. Amante de la naturaleza y los retos deportivos.
+              </p>
+            </div>
+        </div>
+      </div>
+
+      <!-- Formulario Cards -->
+      <div class="col-lg-8">
+        <form action="" autocomplete="off"
+          onsubmit="verificar_boton(); return false;"
+          onreset="console.log('Formulario reseteado')"
+          oninput="console.log('Form input')"
+          onchange="console.log('Form change')"
+        >
+          <div class="row g-4">
+            <!-- Card Datos Personales -->
+            <div class="col-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-light">
+                  <h5 class="mb-0 text-info">Datos Personales</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="txt_nombre" class="form-label">Nombre completo</label>
+                      <input type="text" class="form-control" id="txt_nombre" placeholder="Ej: Pedro Montalvo"
+                        oninput="verificar_nombre(this)"
+                        onchange="verificar_nombre(this)"
+                        onblur="verificar_nombre(this)"
+                        onfocus="console.log('focus nombre')"
+                        onkeydown="console.log('keydown nombre')"
+                        onkeyup="verificar_nombre(this)"
+                        onkeypress="console.log('keypress nombre')"
+                      >
+                      <span id="estado_nombre" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_fecha" class="form-label">Fecha de nacimiento</label>
+                      <input type="date" class="form-control" id="txt_fecha"
+                        onchange="verificar_fecha(this)"
+                        onblur="verificar_fecha(this)"
+                        onfocus="console.log('focus fecha')"
+                      >
+                      <span id="estado_fecha" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_numero" class="form-label">Edad</label>
+                      <input type="number" class="form-control" id="txt_numero" placeholder="Edad"
+                        oninput="verificar_numero(this)"
+                        onchange="verificar_numero(this)"
+                        onkeyup="verificar_numero(this)"
+                      >
+                      <span id="estado_numero" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="select_opcion" class="form-label">Género</label>
+                      <select class="form-select" id="select_opcion"
+                        onchange="verificar_select(this)"
+                        onclick="console.log('select click')"
+                        onfocus="console.log('select focus')"
+                        onblur="console.log('select blur')"
+                      >
+                        <option value="">Selecciona...</option>
+                        <option value="Masculino">Hombre</option>
+                        <option value="Femenino">Mujer</option>
+                        <option value="Otro">Otro</option>
+                      </select>
+                      <span id="estado_select" class="form-text"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Contacto -->
+            <div class="col-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-light">
+                  <h5 class="mb-0 text-info">Contacto</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="txt_email" class="form-label">Correo electrónico</label>
+                      <input type="email" class="form-control" id="txt_email" placeholder="ejemplo@gmail.com"
+                        oninput="verificar_email(this)"
+                        onchange="verificar_email(this)"
+                        onblur="verificar_email(this)"
+                        required
+                      >
+                      <span id="estado_email" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_telefono" class="form-label">Teléfono</label>
+                      <input type="tel" class="form-control" id="txt_telefono" placeholder="0999999999"
+                        oninput="verificar_telefono(this)"
+                        onkeyup="verificar_telefono(this)"
+                      >
+                      <span id="estado_telefono" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_url" class="form-label">Sitio web personal</label>
+                      <input type="url" class="form-control" id="txt_url" placeholder="https://ejemplo.com"
+                        oninput="verificar_url(this)"
+                        onblur="verificar_url(this)"
+                      >
+                      <span id="estado_url" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_hora" class="form-label">Hora preferida de contacto</label>
+                      <input type="time" class="form-control" id="txt_hora"
+                        onchange="verificar_hora(this)"
+                        onblur="verificar_hora(this)"
+                      >
+                      <span id="estado_hora" class="form-text"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Preferencias -->
+            <div class="col-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-light">
+                  <h5 class="mb-0 text-info">Preferencias y Perfil</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="txt_archivo" class="form-label">Foto de Perfil</label>
+                      <input type="file" class="form-control" id="txt_archivo" accept=".png, .jpg, .jpeg"
+                        onchange="verificar_archivo(this)"
+                        onclick="console.log('archivo click')"
+                        onblur="verificar_archivo(this)"
+                      >
+                      <span id="estado_archivo" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_color" class="form-label">Color de Cabello</label>
+                      <input type="color" class="form-control form-control-color" id="txt_color"
+                        oninput="verificar_color(this)"
+                        onchange="verificar_color(this)"
+                      >
+                      <span id="estado_color" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="txt_rango" class="form-label">Peso (kg)</label>
+                      <input type="range" class="form-range" id="txt_rango" min="30" max="150"
+                        oninput="verificar_rango(this)"
+                        onchange="verificar_rango(this)"
+                      >
+                      <span id="estado_rango" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Intereses</label>
+                      <div class="d-flex flex-wrap gap-2">
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="chk_deporte"
+                            onclick="verificar_checkbox()"
+                            onchange="verificar_checkbox()"
+                          >
+                          <label class="form-check-label" for="chk_deporte">Deporte</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="chk_musica"
+                            onclick="verificar_checkbox()"
+                            onchange="verificar_checkbox()"
+                          >
+                          <label class="form-check-label" for="chk_musica">Música</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="chk_lectura"
+                            onclick="verificar_checkbox()"
+                            onchange="verificar_checkbox()"
+                          >
+                          <label class="form-check-label" for="chk_lectura">Lectura</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="chk_viajes"
+                            onclick="verificar_checkbox()"
+                            onchange="verificar_checkbox()"
+                          >
+                          <label class="form-check-label" for="chk_viajes">Viajes</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="chk_tecnologia"
+                            onclick="verificar_checkbox()"
+                            onchange="verificar_checkbox()"
+                          >
+                          <label class="form-check-label" for="chk_tecnologia">Tecnología</label>
+                        </div>
+                      </div>
+                      <span id="estado_checkbox" class="form-text"></span>
+                    </div>
+                    <div class="col-12">
+                      <label for="txt_comentarios" class="form-label">Biografía</label>
+                      <textarea class="form-control" id="txt_comentarios" placeholder="¡Cuéntanos sobre ti!"
+                        oninput="verificar_comentario(this)"
+                        onkeyup="verificar_comentario(this)"
+                        onfocus="console.log('focus textarea')"
+                        onblur="verificar_comentario(this)"
+                      ></textarea>
+                      <span id="estado_comentario" class="form-text"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Seguridad -->
+            <div class="col-12">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-light">
+                  <h5 class="mb-0 text-info">Seguridad</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="txt_password" class="form-label">Contraseña</label>
+                      <input type="password" class="form-control" id="txt_password" placeholder="Mínimo 6 caracteres"
+                        onkeypress="console.log('keypress password')"
+                        onkeyup="verificar_password(this)"
+                        onblur="verificar_password(this)"
+                        required
+                      >
+                      <span id="estado_password" class="form-text"></span>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center">
+                      <input type="radio" class="form-check-input me-2" name="radio" id="radio_terminos"
+                        onclick="verificar_radio(this)"
+                        onchange="verificar_radio(this)"
+                        required
+                      >
+                      <label class="form-check-label" for="radio_terminos">Acepto los términos y condiciones</label>
+                      <span id="estado_radio" class="form-text ms-2"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botón Enviar -->
+            <div class="col-12">
+              <div class="d-grid">
+                <button class="btn btn-info btn-lg fw-bold shadow" type="submit"
+                  onclick="verificar_boton()"
+                  onmouseover="console.log('mouseover boton')"
+                  onmousedown="console.log('mousedown boton')"
+                  onmouseup="console.log('mouseup boton')"
+                  onfocus="console.log('focus boton')"
+                >¡Registrarme!</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-info bg-gradient text-center text-white py-3 mt-5">
+    <small>&copy; 2024 Gran Evento. Todos los derechos reservados.<br>De Steven Egas</small>
+  </footer>
+
+  <script src="public/bootstrap-5.3.5-dist/js/bootstrap.bundle.js"></script>
+  <script src="public/js/eventos.js"></script>
+</body>
+
+</html>
